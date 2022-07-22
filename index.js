@@ -5,19 +5,12 @@ const { setError } = require('./src/utils/error/error');
 const { connectDb } = require('./src/utils/db/db');
 const TareasRoutes = require("./src/api/tareas/tareas.routes"); 
 const UserRoutes = require('./src/api/users/users.routes');
-const cloudinary = require('cloudinary').v2
 
 const PORT = process.env.PORT || 8080
 
 const app = express();
 
 connectDb();
-
-cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.API_KEY,
-    api_secret: process.env.API_SECRET,
-})
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH')
